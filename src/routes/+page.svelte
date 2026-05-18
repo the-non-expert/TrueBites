@@ -7,7 +7,7 @@
 	let bannerVisible = $state(false);
 
 	onMount(() => {
-		if (!sessionStorage.getItem('tb_banner_dismissed')) {
+		if (!localStorage.getItem('tb_banner_dismissed')) {
 			bannerVisible = true;
 		}
 	});
@@ -15,25 +15,13 @@
 	function dismissBanner(e: MouseEvent) {
 		e.preventDefault();
 		e.stopPropagation();
-		sessionStorage.setItem('tb_banner_dismissed', '1');
+		localStorage.setItem('tb_banner_dismissed', '1');
 		bannerVisible = false;
 	}
 
 	const campaignRef = $derived($page.url.searchParams.get('ref') ?? 'home');
 
 	const products = [
-		{
-			badge: 'Bestseller',
-			badgeClass: 'tb-badge-forest',
-			title: 'Roasted Makhanas',
-			italic: '3 flavors',
-			blurb:
-				'Slow-roasted fox nuts. Pudina mint, peri-peri, or rock salt. Crispy, weightless, and wonderfully nothing-to-hide.',
-			price: '₹240',
-			unit: '80g pack',
-			tint: '#EFE3CB',
-			shape: 'makhana' as const
-		},
 		{
 			badge: 'Cool drink',
 			badgeClass: 'tb-badge-turmeric',
@@ -71,7 +59,7 @@
 	<meta name="description" content="Honest Indian snacks. Slow-roasted makhanas and sattu drink." />
 </svelte:head>
 
-<div class="tb-screen tb-grain" style:background="var(--tb-cream)" style:min-height="100svh" style:padding-bottom={bannerVisible ? '56px' : undefined}>
+<div class="tb-screen tb-grain" style:background="var(--tb-cream)" style:min-height="100svh">
 	<!-- Sticky header -->
 	<header
 		style:position="sticky"
@@ -87,7 +75,7 @@
 		<TBLogo size={26} />
 		<div style:display="flex" style:gap="8px">
 			<a
-				href="https://wa.me/919876543210"
+				href="https://wa.me/917008061213"
 				target="_blank"
 				rel="noopener"
 				class="tb-btn tb-btn-whatsapp tb-btn-sm"
@@ -129,7 +117,7 @@
 
 		<div style:margin-top="24px">
 			<a
-				href="https://wa.me/919876543210"
+				href="https://wa.me/917008061213"
 				target="_blank"
 				rel="noopener"
 				class="tb-btn tb-btn-whatsapp tb-btn-lg tb-btn-block"
@@ -188,6 +176,54 @@
 		</div>
 
 		<div style:display="flex" style:flex-direction="column" style:gap="16px">
+			{#if bannerVisible}
+				<div
+					style:position="relative"
+					style:border-radius="22px"
+					style:overflow="hidden"
+					style:background="var(--tb-terracotta)"
+					style:border="1px solid var(--tb-terracotta-deep)"
+					style:box-shadow="var(--tb-shadow-sm)"
+				>
+					<a
+						href="/c/{campaignRef}"
+						style:display="flex"
+						style:flex-direction="column"
+						style:justify-content="center"
+						style:padding="22px 56px 22px 22px"
+						style:min-height="110px"
+						style:color="var(--tb-cream)"
+						style:text-decoration="none"
+					>
+						<div style:font-size="11px" style:font-weight="700" style:text-transform="uppercase" style:letter-spacing="0.12em" style:opacity="0.75" style:margin-bottom="6px">
+							Free offer · Today only
+						</div>
+						<div class="tb-display" style:font-size="24px" style:line-height="1.1">
+							Claim your free<br /><em style:font-style="italic">sattu drink</em> →
+						</div>
+					</a>
+					<button
+						onclick={dismissBanner}
+						aria-label="Dismiss"
+						style:position="absolute"
+						style:top="12px"
+						style:right="12px"
+						style:background="rgba(0,0,0,0.15)"
+						style:border="none"
+						style:color="var(--tb-cream)"
+						style:width="32px"
+						style:height="32px"
+						style:border-radius="50%"
+						style:display="flex"
+						style:align-items="center"
+						style:justify-content="center"
+						style:cursor="pointer"
+						style:padding="0"
+					>
+						{@html icons.close}
+					</button>
+				</div>
+			{/if}
 			{#each products as p}
 				<div
 					style:border-radius="22px"
@@ -234,7 +270,7 @@
 								<div style:font-family="var(--tb-mono)" style:font-size="11px" style:color="var(--tb-muted)">{p.unit}</div>
 							</div>
 							<a
-								href="https://wa.me/919876543210"
+								href="https://wa.me/917008061213"
 								target="_blank"
 								rel="noopener"
 								class="tb-btn tb-btn-secondary tb-btn-sm"
@@ -344,7 +380,7 @@
 
 		<div style:margin-top="22px">
 			<a
-				href="https://wa.me/919876543210"
+				href="https://wa.me/917008061213"
 				target="_blank"
 				rel="noopener"
 				class="tb-btn tb-btn-whatsapp tb-btn-lg tb-btn-block"
@@ -356,60 +392,6 @@
 			</a>
 		</div>
 	</section>
-
-	<!-- Campaign banner -->
-	{#if bannerVisible}
-		<div
-			style:position="fixed"
-			style:bottom="0"
-			style:left="0"
-			style:right="0"
-			style:height="56px"
-			style:z-index="30"
-			style:background="var(--tb-terracotta)"
-			style:display="flex"
-			style:align-items="center"
-			style:padding-bottom="env(safe-area-inset-bottom, 0px)"
-		>
-			<a
-				href="/c/{campaignRef}"
-				style:flex="1"
-				style:display="flex"
-				style:align-items="center"
-				style:height="100%"
-				style:padding="0 52px 0 20px"
-				style:color="var(--tb-cream)"
-				style:text-decoration="none"
-				style:font-size="14px"
-				style:font-weight="600"
-				style:white-space="nowrap"
-				style:overflow="hidden"
-				style:text-overflow="ellipsis"
-			>
-				You're at a TrueBites cafe — claim your free sattu drink →
-			</a>
-			<button
-				onclick={dismissBanner}
-				aria-label="Dismiss banner"
-				style:position="absolute"
-				style:right="0"
-				style:top="0"
-				style:height="56px"
-				style:width="52px"
-				style:display="flex"
-				style:align-items="center"
-				style:justify-content="center"
-				style:background="transparent"
-				style:border="none"
-				style:color="var(--tb-cream)"
-				style:opacity="0.75"
-				style:cursor="pointer"
-				style:padding="0"
-			>
-				{@html icons.close}
-			</button>
-		</div>
-	{/if}
 
 	<!-- Footer -->
 	<footer
@@ -431,7 +413,7 @@
 		</div>
 		<div style:margin-top="22px" style:display="flex" style:flex-direction="column" style:gap="12px">
 			<a
-				href="https://wa.me/919876543210"
+				href="https://wa.me/917008061213"
 				target="_blank"
 				rel="noopener"
 				style:display="flex"
@@ -441,7 +423,7 @@
 				style:text-decoration="none"
 				style:font-size="14px"
 			>
-				{@html icons.whatsapp} +91 98765 43210
+				{@html icons.whatsapp} +91 70080 61213
 			</a>
 			<a
 				href="https://instagram.com/truebites.in"
