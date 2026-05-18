@@ -25,29 +25,29 @@
 
 	// ── Sample data ───────────────────────────────────────────────
 	const cafes = $state([
-		{ id: 'c1', name: 'Brew & Co', area: 'Koramangala', signups: 142, feedback: 98 },
-		{ id: 'c2', name: 'Third Wave Coffee', area: 'Indiranagar', signups: 89, feedback: 61 },
-		{ id: 'c3', name: 'Blue Tokai', area: 'HSR Layout', signups: 76, feedback: 47 },
-		{ id: 'c4', name: 'Subko', area: 'Whitefield', signups: 54, feedback: 38 },
-		{ id: 'c5', name: 'Araku Coffee', area: 'Jayanagar', signups: 41, feedback: 22 }
+		{ id: 'c1', name: 'Café Odisha', area: 'Badambadi', signups: 142, feedback: 98 },
+		{ id: 'c2', name: 'The Brew House', area: 'CDA Sector 6', signups: 89, feedback: 61 },
+		{ id: 'c3', name: 'Chai & Co', area: 'Buxi Bazar', signups: 76, feedback: 47 },
+		{ id: 'c4', name: 'Sip & Sit', area: 'Mangalabag', signups: 54, feedback: 38 },
+		{ id: 'c5', name: 'The Corner Cup', area: 'Jobra', signups: 41, feedback: 22 }
 	]);
 
 	const signups = [
-		{ name: 'Aanya Sharma', phone: '+91 98765 43210', cafe: 'Brew & Co', when: '2m ago', code: 'TB-4829' },
-		{ name: 'Rohan Mehta', phone: '+91 99234 12110', cafe: 'Third Wave Coffee', when: '14m ago', code: 'TB-5512' },
-		{ name: 'Priya Iyer', phone: '+91 87654 32109', cafe: 'Brew & Co', when: '38m ago', code: 'TB-2204' },
-		{ name: 'Karthik Rao', phone: '+91 91234 56781', cafe: 'Blue Tokai', when: '1h ago', code: 'TB-9981' },
-		{ name: 'Meera Pillai', phone: '+91 99887 76655', cafe: 'Subko', when: '2h ago', code: 'TB-3367' },
-		{ name: 'Vikram Joshi', phone: '+91 90909 12345', cafe: 'Brew & Co', when: '3h ago', code: 'TB-7744' },
-		{ name: 'Sneha Kulkarni', phone: '+91 80000 11122', cafe: 'Araku Coffee', when: '4h ago', code: 'TB-8823' }
+		{ name: 'Aanya Sharma', phone: '+91 98765 43210', cafe: 'Café Odisha', when: '2m ago', code: 'TB-4829' },
+		{ name: 'Rohan Sahoo', phone: '+91 99234 12110', cafe: 'The Brew House', when: '14m ago', code: 'TB-5512' },
+		{ name: 'Priya Mishra', phone: '+91 87654 32109', cafe: 'Café Odisha', when: '38m ago', code: 'TB-2204' },
+		{ name: 'Subhash Nayak', phone: '+91 91234 56781', cafe: 'Chai & Co', when: '1h ago', code: 'TB-9981' },
+		{ name: 'Smita Pattnaik', phone: '+91 99887 76655', cafe: 'Sip & Sit', when: '2h ago', code: 'TB-3367' },
+		{ name: 'Bikash Jena', phone: '+91 90909 12345', cafe: 'Café Odisha', when: '3h ago', code: 'TB-7744' },
+		{ name: 'Deepa Mohanty', phone: '+91 80000 11122', cafe: 'The Corner Cup', when: '4h ago', code: 'TB-8823' }
 	];
 
 	const feedbackRows = [
-		{ name: 'Aanya Sharma', cafe: 'Brew & Co', rating: 5, flavor: 'Earthy', again: 'Yes', when: '2m ago', comment: 'Loved the cardamom note. So smooth!', age: '25–34', health: 'Yes' },
-		{ name: 'Rohan Mehta', cafe: 'Third Wave Coffee', rating: 4, flavor: 'Less sweet', again: 'Yes', when: '20m ago', comment: 'Perfect on a hot day.', age: '18–24', health: 'Somewhat' },
-		{ name: 'Priya Iyer', cafe: 'Brew & Co', rating: 5, flavor: 'Sweet', again: 'Yes', when: '1h ago', comment: 'Reminded me of home.', age: '35–44', health: 'Yes' },
-		{ name: 'Karthik Rao', cafe: 'Blue Tokai', rating: 3, flavor: 'Tangy', again: 'Maybe', when: '2h ago', comment: 'A touch too sweet for me.', age: '25–34', health: 'Not really' },
-		{ name: 'Meera Pillai', cafe: 'Subko', rating: 5, flavor: 'Earthy', again: 'Yes', when: '3h ago', comment: '', age: '45+', health: 'Yes' }
+		{ name: 'Aanya Sharma', cafe: 'Café Odisha', rating: 5, flavor: 'Earthy', again: 'Yes', when: '2m ago', comment: 'Loved the cardamom note. So smooth!', age: '25–34', health: 'Yes' },
+		{ name: 'Rohan Sahoo', cafe: 'The Brew House', rating: 4, flavor: 'Less sweet', again: 'Yes', when: '20m ago', comment: 'Perfect on a hot day.', age: '18–24', health: 'Somewhat' },
+		{ name: 'Priya Mishra', cafe: 'Café Odisha', rating: 5, flavor: 'Sweet', again: 'Yes', when: '1h ago', comment: 'Reminded me of home.', age: '35–44', health: 'Yes' },
+		{ name: 'Subhash Nayak', cafe: 'Chai & Co', rating: 3, flavor: 'Tangy', again: 'Maybe', when: '2h ago', comment: 'A touch too sweet for me.', age: '25–34', health: 'Not really' },
+		{ name: 'Smita Pattnaik', cafe: 'Sip & Sit', rating: 5, flavor: 'Earthy', again: 'Yes', when: '3h ago', comment: '', age: '45+', health: 'Yes' }
 	];
 
 	// ── Signups filter state ──────────────────────────────────────
@@ -739,7 +739,7 @@
 							</div>
 							<div>
 								<label class="tb-label" for="cafe-area">Location / area</label>
-								<input id="cafe-area" class="tb-input" placeholder="e.g. Koramangala, Bengaluru" bind:value={newCafeArea} />
+								<input id="cafe-area" class="tb-input" placeholder="e.g. Badambadi, Cuttack" bind:value={newCafeArea} />
 							</div>
 						</div>
 

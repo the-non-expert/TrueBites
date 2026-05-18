@@ -43,7 +43,7 @@
 			title: 'WhatsApp us',
 			body: "Send the code, your address, and you're done."
 		},
-		{ n: '03', title: 'Delivered fresh', body: 'Same-day in Bengaluru, 2-day pan-India.' }
+		{ n: '03', title: 'Delivered fresh', body: 'Same-day in Cuttack, 2-day pan-India.' }
 	];
 </script>
 
@@ -122,7 +122,7 @@
 			</a>
 		</div>
 		<div style:margin-top="10px" style:font-size="12px" style:color="var(--tb-muted)">
-			Free delivery in Bengaluru on orders above ₹399.
+			Free delivery in Cuttack on orders above ₹399.
 		</div>
 
 		<!-- Hero illustration -->
@@ -384,7 +384,7 @@
 				{@html icons.instagram} @truebites.in on Instagram
 			</a>
 			<div style:display="flex" style:align-items="center" style:gap="10px" style:font-size="14px" style:opacity="0.7">
-				{@html icons.pin} Bengaluru, India
+				{@html icons.pin} Cuttack, Odisha
 			</div>
 		</div>
 		<div

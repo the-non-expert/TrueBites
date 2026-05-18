@@ -10,11 +10,11 @@
 	const cafeId = $derived($page.params.cafeId);
 
 	const cafeNames: Record<string, string> = {
-		'brew-co': 'Brew & Co, Koramangala',
-		'third-wave': 'Third Wave Coffee, Indiranagar',
-		'blue-tokai': 'Blue Tokai, HSR Layout',
-		subko: 'Subko, Whitefield',
-		araku: 'Araku Coffee, Jayanagar'
+		'cafe-odisha': 'Café Odisha, Badambadi',
+		'brew-house': 'The Brew House, CDA Sector 6',
+		'chai-co': 'Chai & Co, Buxi Bazar',
+		'sip-sit': 'Sip & Sit, Mangalabag',
+		'corner-cup': 'The Corner Cup, Jobra'
 	};
 	const cafeName = $derived(cafeNames[cafeId] ?? 'your cafe today');
 

@@ -1,6 +1,6 @@
 # TrueBites
 
-Campaign platform for TrueBites — a Bengaluru-based Indian health food brand selling roasted makhanas and sattu drink.
+Campaign platform for TrueBites — a Cuttack, Odisha-based Indian health food brand selling roasted makhanas and sattu drink.
 
 ## What this is
 
