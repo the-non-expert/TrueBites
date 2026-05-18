@@ -7,6 +7,18 @@
 
 	const products = [
 		{
+			badge: 'Bestseller',
+			badgeClass: 'tb-badge-forest',
+			title: 'Roasted Makhanas',
+			italic: '3 flavors',
+			blurb:
+				'Slow-roasted fox nuts. Pudina mint, peri-peri, or rock salt. Crispy, weightless, and wonderfully nothing-to-hide.',
+			price: '₹240',
+			unit: '80g pack',
+			tint: '#EFE3CB',
+			shape: 'makhana' as const
+		},
+		{
 			badge: 'Cool drink',
 			badgeClass: 'tb-badge-turmeric',
 			title: 'Sattu Drink',
