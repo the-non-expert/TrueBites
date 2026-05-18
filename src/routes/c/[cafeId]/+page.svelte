@@ -58,7 +58,7 @@
 	}
 
 	const whatsappUrl = $derived(
-		`https://wa.me/919876543210?text=${encodeURIComponent(`Hi, I'd like to order makhanas. My code is ${discountCode}`)}`
+		`https://wa.me/917008061213?text=${encodeURIComponent(`Hi, I'd like to order makhanas. My code is ${discountCode}`)}`
 	);
 </script>
 
