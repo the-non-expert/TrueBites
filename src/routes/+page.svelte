@@ -1,6 +1,25 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
 	import TBLogo from '$lib/components/TBLogo.svelte';
 	import { icons } from '$lib/icons';
+
+	let bannerVisible = $state(false);
+
+	onMount(() => {
+		if (!sessionStorage.getItem('tb_banner_dismissed')) {
+			bannerVisible = true;
+		}
+	});
+
+	function dismissBanner(e: MouseEvent) {
+		e.preventDefault();
+		e.stopPropagation();
+		sessionStorage.setItem('tb_banner_dismissed', '1');
+		bannerVisible = false;
+	}
+
+	const campaignRef = $derived($page.url.searchParams.get('ref') ?? 'home');
 
 	const products = [
 		{
@@ -52,7 +71,7 @@
 	<meta name="description" content="Honest Indian snacks. Slow-roasted makhanas and sattu drink." />
 </svelte:head>
 
-<div class="tb-screen tb-grain" style:background="var(--tb-cream)" style:min-height="100svh">
+<div class="tb-screen tb-grain" style:background="var(--tb-cream)" style:min-height="100svh" style:padding-bottom={bannerVisible ? '56px' : undefined}>
 	<!-- Sticky header -->
 	<header
 		style:position="sticky"
@@ -337,6 +356,60 @@
 			</a>
 		</div>
 	</section>
+
+	<!-- Campaign banner -->
+	{#if bannerVisible}
+		<div
+			style:position="fixed"
+			style:bottom="0"
+			style:left="0"
+			style:right="0"
+			style:height="56px"
+			style:z-index="30"
+			style:background="var(--tb-terracotta)"
+			style:display="flex"
+			style:align-items="center"
+			style:padding-bottom="env(safe-area-inset-bottom, 0px)"
+		>
+			<a
+				href="/c/{campaignRef}"
+				style:flex="1"
+				style:display="flex"
+				style:align-items="center"
+				style:height="100%"
+				style:padding="0 52px 0 20px"
+				style:color="var(--tb-cream)"
+				style:text-decoration="none"
+				style:font-size="14px"
+				style:font-weight="600"
+				style:white-space="nowrap"
+				style:overflow="hidden"
+				style:text-overflow="ellipsis"
+			>
+				You're at a TrueBites cafe — claim your free sattu drink →
+			</a>
+			<button
+				onclick={dismissBanner}
+				aria-label="Dismiss banner"
+				style:position="absolute"
+				style:right="0"
+				style:top="0"
+				style:height="56px"
+				style:width="52px"
+				style:display="flex"
+				style:align-items="center"
+				style:justify-content="center"
+				style:background="transparent"
+				style:border="none"
+				style:color="var(--tb-cream)"
+				style:opacity="0.75"
+				style:cursor="pointer"
+				style:padding="0"
+			>
+				{@html icons.close}
+			</button>
+		</div>
+	{/if}
 
 	<!-- Footer -->
 	<footer
