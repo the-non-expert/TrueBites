@@ -1,23 +1,7 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import TBLogo from '$lib/components/TBLogo.svelte';
 	import { icons } from '$lib/icons';
-
-	let bannerVisible = $state(false);
-
-	onMount(() => {
-		if (!localStorage.getItem('tb_banner_dismissed')) {
-			bannerVisible = true;
-		}
-	});
-
-	function dismissBanner(e: MouseEvent) {
-		e.preventDefault();
-		e.stopPropagation();
-		localStorage.setItem('tb_banner_dismissed', '1');
-		bannerVisible = false;
-	}
 
 	const campaignRef = $derived($page.url.searchParams.get('ref') ?? 'home');
 
@@ -156,11 +140,6 @@
 					<circle cx="170" cy="155" r="2" /><circle cx="200" cy="148" r="1.5" /><circle cx="155" cy="170" r="1.8" />
 				</g>
 			</svg>
-			<div style:position="absolute" style:top="14px" style:left="14px">
-				<span class="tb-badge" style:background="rgba(255,252,246,0.9)" style:color="var(--tb-ink)">
-					✦ Bestseller
-				</span>
-			</div>
 		</div>
 	</section>
 
@@ -176,54 +155,111 @@
 		</div>
 
 		<div style:display="flex" style:flex-direction="column" style:gap="16px">
-			{#if bannerVisible}
+			<!-- Campaign banner card -->
+			<a
+				href="/c/{campaignRef}"
+				style:display="block"
+				style:position="relative"
+				style:border-radius="22px"
+				style:overflow="hidden"
+				style:text-decoration="none"
+				style:box-shadow="0 4px 24px rgba(158,79,38,0.35)"
+				style:min-height="148px"
+				style:background="radial-gradient(ellipse at 72% 50%, #D4824A 0%, #C26B3D 42%, #8B3E1A 100%)"
+			>
+				<!-- SVG illustration -->
+				<svg
+					viewBox="0 0 360 148"
+					style:position="absolute"
+					style:inset="0"
+					style:width="100%"
+					style:height="100%"
+					preserveAspectRatio="xMidYMid slice"
+				>
+					<!-- Warm glow behind glass -->
+					<circle cx="282" cy="74" r="66" fill="rgba(255,220,160,0.13)" />
+					<circle cx="282" cy="74" r="46" fill="rgba(255,220,160,0.10)" />
+
+					<!-- Glass body -->
+					<path d="M248 32 L322 32 L316 124 Q285 133 258 124 Z" fill="rgba(255,252,246,0.10)" />
+					<path d="M253 46 L318 46 L313 122 Q285 130 261 122 Z" fill="#E5B247" opacity="0.88" />
+					<!-- Liquid surface ellipse -->
+					<ellipse cx="285" cy="46" rx="33" ry="5.5" fill="#F3D88C" />
+					<!-- Foam layer -->
+					<ellipse cx="285" cy="46" rx="33" ry="5.5" fill="none" stroke="#FAF6EE" stroke-width="1" opacity="0.4" />
+
+					<!-- Straw -->
+					<path d="M308 18 L304 105" stroke="#FAF6EE" stroke-width="4" stroke-linecap="round" opacity="0.9" />
+					<path d="M308 18 L304 105" stroke="rgba(0,0,0,0.08)" stroke-width="4" stroke-linecap="round" />
+
+					<!-- Leaf garnish -->
+					<path d="M264 30 Q250 14 270 18 Q258 30 264 30 Z" fill="#2F5C42" />
+					<path d="M264 30 Q256 20 268 20" stroke="#4A7A58" stroke-width="0.8" fill="none" opacity="0.7" />
+					<path d="M270 26 Q260 12 278 16 Q266 26 270 26 Z" fill="#2F5C42" opacity="0.7" />
+
+					<!-- Bubbles inside drink -->
+					<circle cx="272" cy="72" r="3.5" fill="#F3D88C" opacity="0.55" />
+					<circle cx="294" cy="62" r="2.5" fill="#F3D88C" opacity="0.45" />
+					<circle cx="283" cy="88" r="3" fill="#F3D88C" opacity="0.38" />
+					<circle cx="302" cy="80" r="2" fill="#F3D88C" opacity="0.35" />
+
+					<!-- Spice/seed scatter (cardamom) -->
+					<ellipse cx="230" cy="118" rx="5" ry="3" fill="rgba(255,252,246,0.18)" transform="rotate(-20,230,118)" />
+					<ellipse cx="218" cy="38" rx="4" ry="2.5" fill="rgba(255,252,246,0.14)" transform="rotate(15,218,38)" />
+					<ellipse cx="335" cy="30" rx="4" ry="2.5" fill="rgba(255,252,246,0.12)" transform="rotate(-10,335,30)" />
+
+					<!-- Sparkle stars -->
+					<path d="M225 52 L226.2 48 L227.4 52 L231 53 L227.4 54 L226.2 58 L225 54 L221 53 Z" fill="#FAF6EE" opacity="0.35" />
+					<path d="M200 95 L201 92.5 L202 95 L204.5 96 L202 97 L201 99.5 L200 97 L197.5 96 Z" fill="#FAF6EE" opacity="0.25" />
+					<path d="M338 95 L339 92.5 L340 95 L342.5 96 L340 97 L339 99.5 L338 97 L335.5 96 Z" fill="#FAF6EE" opacity="0.2" />
+
+					<!-- Subtle grain dots on left -->
+					<circle cx="30" cy="40" r="2.5" fill="rgba(255,252,246,0.12)" />
+					<circle cx="18" cy="80" r="2" fill="rgba(255,252,246,0.09)" />
+					<circle cx="45" cy="115" r="2" fill="rgba(255,252,246,0.10)" />
+					<circle cx="60" cy="55" r="1.5" fill="rgba(255,252,246,0.08)" />
+
+					<!-- Divider line between text and illustration -->
+					<line x1="220" y1="30" x2="220" y2="118" stroke="rgba(255,252,246,0.12)" stroke-width="1" />
+				</svg>
+
+				<!-- Text content -->
 				<div
 					style:position="relative"
-					style:border-radius="22px"
-					style:overflow="hidden"
-					style:background="var(--tb-terracotta)"
-					style:border="1px solid var(--tb-terracotta-deep)"
-					style:box-shadow="var(--tb-shadow-sm)"
+					style:padding="22px 22px 22px 22px"
+					style:max-width="58%"
 				>
-					<a
-						href="/c/{campaignRef}"
-						style:display="flex"
-						style:flex-direction="column"
-						style:justify-content="center"
-						style:padding="22px 56px 22px 22px"
-						style:min-height="110px"
-						style:color="var(--tb-cream)"
-						style:text-decoration="none"
+					<div
+						style:font-size="10px"
+						style:font-weight="700"
+						style:text-transform="uppercase"
+						style:letter-spacing="0.14em"
+						style:color="var(--tb-turmeric-soft)"
+						style:margin-bottom="7px"
 					>
-						<div style:font-size="11px" style:font-weight="700" style:text-transform="uppercase" style:letter-spacing="0.12em" style:opacity="0.75" style:margin-bottom="6px">
-							Free offer · Today only
-						</div>
-						<div class="tb-display" style:font-size="24px" style:line-height="1.1">
-							Claim your free<br /><em style:font-style="italic">sattu drink</em> →
-						</div>
-					</a>
-					<button
-						onclick={dismissBanner}
-						aria-label="Dismiss"
-						style:position="absolute"
-						style:top="12px"
-						style:right="12px"
-						style:background="rgba(0,0,0,0.15)"
-						style:border="none"
+						Free · Cafe offer
+					</div>
+					<div
+						class="tb-display"
+						style:font-size="26px"
+						style:line-height="1.08"
 						style:color="var(--tb-cream)"
-						style:width="32px"
-						style:height="32px"
-						style:border-radius="50%"
-						style:display="flex"
+					>
+						Claim your<br /><em style:font-style="italic">sattu drink</em>
+					</div>
+					<div
+						style:margin-top="12px"
+						style:display="inline-flex"
 						style:align-items="center"
-						style:justify-content="center"
-						style:cursor="pointer"
-						style:padding="0"
+						style:gap="6px"
+						style:font-size="13px"
+						style:font-weight="600"
+						style:color="var(--tb-turmeric-soft)"
 					>
-						{@html icons.close}
-					</button>
+						Tap to claim {@html icons.plus}
+					</div>
 				</div>
-			{/if}
+			</a>
 			{#each products as p}
 				<div
 					style:border-radius="22px"
