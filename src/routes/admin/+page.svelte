@@ -104,8 +104,10 @@
 		}
 	}
 
+	const BASE_URL = import.meta.env.VITE_PUBLIC_URL ?? 'https://truebites.netlify.app';
+
 	function cafeQrUrl(c: { name: string }) {
-		return 'truebites.in/c/' + c.name.toLowerCase().replace(/\W+/g, '-');
+		return `${BASE_URL}/c/` + c.name.toLowerCase().replace(/\W+/g, '-');
 	}
 
 	const navItems: { id: Tab; label: string; icon: string }[] = [
