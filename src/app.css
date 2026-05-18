@@ -1,0 +1,328 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+/* ─── Design tokens → Tailwind v4 @theme ─────────────────────── */
+@theme {
+  /* Colors */
+  --color-terracotta: #C26B3D;
+  --color-terracotta-deep: #9E4F26;
+  --color-terracotta-soft: #E8B89B;
+  --color-forest: #2F5C42;
+  --color-forest-deep: #1F3F2D;
+  --color-turmeric: #E5B247;
+  --color-turmeric-soft: #F3D88C;
+  --color-cream: #FAF6EE;
+  --color-cream-deep: #F2EBDB;
+  --color-paper: #FFFCF6;
+  --color-ink: #1F1A14;
+  --color-charcoal: #4A4036;
+  --color-muted: #8A7F70;
+  --color-hairline: #ECE4D5;
+  --color-hairline-strong: #D9CFBC;
+  --color-success: #2F5C42;
+  --color-error: #B8453A;
+  --color-whatsapp: #25D366;
+  --color-whatsapp-deep: #1FAE56;
+
+  /* Typography */
+  --font-display: 'Instrument Serif', 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-pill: 9999px;
+}
+
+/* ─── CSS custom properties (direct use via var()) ────────────── */
+:root {
+  --tb-terracotta: #C26B3D;
+  --tb-terracotta-deep: #9E4F26;
+  --tb-terracotta-soft: #E8B89B;
+  --tb-forest: #2F5C42;
+  --tb-forest-deep: #1F3F2D;
+  --tb-turmeric: #E5B247;
+  --tb-turmeric-soft: #F3D88C;
+  --tb-cream: #FAF6EE;
+  --tb-cream-deep: #F2EBDB;
+  --tb-paper: #FFFCF6;
+  --tb-ink: #1F1A14;
+  --tb-charcoal: #4A4036;
+  --tb-muted: #8A7F70;
+  --tb-hairline: #ECE4D5;
+  --tb-hairline-strong: #D9CFBC;
+  --tb-success: #2F5C42;
+  --tb-error: #B8453A;
+  --tb-whatsapp: #25D366;
+  --tb-whatsapp-deep: #1FAE56;
+
+  --tb-display: 'Instrument Serif', 'Cormorant Garamond', Georgia, serif;
+  --tb-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --tb-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+  --tb-r-sm: 8px;
+  --tb-r-md: 12px;
+  --tb-r-lg: 18px;
+  --tb-r-xl: 24px;
+  --tb-r-pill: 9999px;
+
+  --tb-shadow-sm: 0 1px 2px rgba(31,26,20,0.06), 0 1px 1px rgba(31,26,20,0.04);
+  --tb-shadow-md: 0 4px 12px rgba(31,26,20,0.07), 0 1px 3px rgba(31,26,20,0.05);
+  --tb-shadow-lg: 0 18px 40px rgba(31,26,20,0.12), 0 4px 10px rgba(31,26,20,0.06);
+  --tb-shadow-card: 0 1px 0 rgba(255,255,255,0.6) inset, 0 1px 3px rgba(31,26,20,0.05), 0 4px 14px rgba(31,26,20,0.06);
+}
+
+/* ─── Base ────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { height: 100%; }
+body {
+  font-family: var(--tb-body);
+  color: var(--tb-ink);
+  background: var(--tb-cream);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  margin: 0;
+  min-height: 100%;
+}
+
+button { font: inherit; cursor: pointer; }
+input, textarea, select { font: inherit; color: inherit; }
+a { color: inherit; }
+
+/* ─── Paper grain texture ─────────────────────────────────────── */
+.tb-grain {
+  background-image:
+    radial-gradient(rgba(31,26,20,0.025) 1px, transparent 1px),
+    radial-gradient(rgba(31,26,20,0.015) 1px, transparent 1px);
+  background-size: 3px 3px, 7px 7px;
+  background-position: 0 0, 1.5px 1.5px;
+}
+
+/* ─── Typography utilities ────────────────────────────────────── */
+.tb-display {
+  font-family: var(--tb-display);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+}
+.tb-display-italic {
+  font-family: var(--tb-display);
+  font-style: italic;
+  font-weight: 400;
+}
+.tb-mono { font-family: var(--tb-mono); }
+.tb-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--tb-charcoal);
+  margin-bottom: 8px;
+  letter-spacing: -0.005em;
+}
+
+/* ─── Buttons ─────────────────────────────────────────────────── */
+.tb-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 52px;
+  padding: 0 20px;
+  border-radius: var(--tb-r-pill);
+  border: none;
+  font-family: var(--tb-body);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  transition: transform 0.12s, background 0.15s, box-shadow 0.15s, opacity 0.15s;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.tb-btn:active { transform: scale(0.985); }
+
+.tb-btn-primary {
+  background: var(--tb-ink);
+  color: var(--tb-paper);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 0 6px 16px rgba(31,26,20,0.18);
+}
+.tb-btn-primary:hover { background: #2b241c; }
+
+.tb-btn-accent {
+  background: var(--tb-terracotta);
+  color: #fff;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.18) inset, 0 8px 18px rgba(194,107,61,0.32);
+}
+.tb-btn-accent:hover { background: var(--tb-terracotta-deep); }
+
+.tb-btn-secondary {
+  background: transparent;
+  color: var(--tb-ink);
+  border: 1.5px solid var(--tb-hairline-strong);
+}
+.tb-btn-secondary:hover { background: var(--tb-cream); border-color: var(--tb-ink); }
+
+.tb-btn-ghost {
+  background: transparent;
+  color: var(--tb-ink);
+}
+.tb-btn-ghost:hover { background: var(--tb-cream-deep); }
+
+.tb-btn-destructive {
+  background: var(--tb-error);
+  color: #fff;
+}
+
+.tb-btn-whatsapp {
+  background: var(--tb-whatsapp);
+  color: #fff;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.18) inset, 0 8px 18px rgba(37,211,102,0.3);
+}
+.tb-btn-whatsapp:hover { background: var(--tb-whatsapp-deep); }
+
+.tb-btn-sm { height: 36px; padding: 0 14px; font-size: 13px; }
+.tb-btn-lg { height: 56px; padding: 0 24px; font-size: 17px; }
+.tb-btn-block { width: 100%; }
+.tb-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.tb-btn:disabled:active { transform: none; }
+
+/* ─── Inputs ──────────────────────────────────────────────────── */
+.tb-input {
+  width: 100%;
+  height: 54px;
+  padding: 0 16px;
+  background: var(--tb-paper);
+  border: 1.5px solid var(--tb-hairline-strong);
+  border-radius: var(--tb-r-md);
+  font-family: var(--tb-body);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--tb-ink);
+  transition: border-color 0.15s, background 0.15s;
+  outline: none;
+}
+.tb-input:focus { border-color: var(--tb-ink); background: #fff; }
+.tb-input::placeholder { color: var(--tb-muted); font-weight: 400; }
+
+.tb-input-group { display: flex; align-items: stretch; }
+.tb-input-prefix {
+  display: flex;
+  align-items: center;
+  padding: 0 12px 0 16px;
+  background: var(--tb-paper);
+  border: 1.5px solid var(--tb-hairline-strong);
+  border-right: none;
+  border-radius: var(--tb-r-md) 0 0 var(--tb-r-md);
+  font-family: var(--tb-mono);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--tb-charcoal);
+  flex-shrink: 0;
+}
+.tb-input-group .tb-input {
+  border-radius: 0 var(--tb-r-md) var(--tb-r-md) 0;
+  border-left: none;
+}
+
+.tb-textarea {
+  width: 100%;
+  min-height: 96px;
+  padding: 14px 16px;
+  background: var(--tb-paper);
+  border: 1.5px solid var(--tb-hairline-strong);
+  border-radius: var(--tb-r-md);
+  font-family: var(--tb-body);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--tb-ink);
+  resize: none;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.tb-textarea:focus { border-color: var(--tb-ink); }
+
+/* ─── Cards ───────────────────────────────────────────────────── */
+.tb-card {
+  background: var(--tb-paper);
+  border: 1px solid var(--tb-hairline);
+  border-radius: var(--tb-r-lg);
+  padding: 20px;
+}
+.tb-card-raised {
+  background: var(--tb-paper);
+  border-radius: var(--tb-r-lg);
+  box-shadow: var(--tb-shadow-card);
+  padding: 20px;
+}
+
+/* ─── Chips ───────────────────────────────────────────────────── */
+.tb-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 38px;
+  padding: 0 16px;
+  background: var(--tb-paper);
+  border: 1.5px solid var(--tb-hairline-strong);
+  border-radius: var(--tb-r-pill);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--tb-charcoal);
+  cursor: pointer;
+  transition: all 0.15s;
+  user-select: none;
+}
+.tb-chip:hover { border-color: var(--tb-ink); }
+.tb-chip.is-active {
+  background: var(--tb-ink);
+  border-color: var(--tb-ink);
+  color: var(--tb-paper);
+}
+.tb-chip-sm { height: 30px; padding: 0 12px; font-size: 12px; }
+
+/* ─── Badges ──────────────────────────────────────────────────── */
+.tb-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 9px;
+  border-radius: var(--tb-r-pill);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.tb-badge-cream { background: var(--tb-cream-deep); color: var(--tb-charcoal); }
+.tb-badge-forest { background: rgba(47,92,66,0.12); color: var(--tb-forest); }
+.tb-badge-terracotta { background: rgba(194,107,61,0.14); color: var(--tb-terracotta-deep); }
+.tb-badge-turmeric { background: rgba(229,178,71,0.22); color: #7a5a14; }
+
+/* ─── Stars ───────────────────────────────────────────────────── */
+.tb-stars { display: inline-flex; gap: 4px; }
+
+/* ─── Screen utility ──────────────────────────────────────────── */
+.tb-screen {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.tb-screen::-webkit-scrollbar { display: none; }
+
+/* ─── Select reset ────────────────────────────────────────────── */
+.tb-select {
+  appearance: none;
+  height: 36px;
+  padding: 0 32px 0 14px;
+  border-radius: var(--tb-r-pill);
+  border: 1.5px solid var(--tb-hairline-strong);
+  background: var(--tb-paper);
+  font-family: var(--tb-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--tb-ink);
+  cursor: pointer;
+  outline: none;
+}
+.tb-select:focus { border-color: var(--tb-ink); }
