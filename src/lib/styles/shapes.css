@@ -1,0 +1,167 @@
+/* ═══════════════════════════════════════════════════════════════
+   TrueBites Organic Shapes & Texture
+   Hippeas-inspired: wavy dividers, blob masks, grain texture,
+   organic section transitions.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─── Paper grain texture ─────────────────────────────────────────
+   Subtle dot-pattern overlay. Apply to any section background.
+─────────────────────────────────────────────────────────────────── */
+.tb-grain {
+  background-image:
+    radial-gradient(rgba(31,26,20,0.025) 1px, transparent 1px),
+    radial-gradient(rgba(31,26,20,0.015) 1px, transparent 1px);
+  background-size: 3px 3px, 7px 7px;
+  background-position: 0 0, 1.5px 1.5px;
+}
+
+/* ─── Wavy section dividers ───────────────────────────────────────
+   SVG-based waves embedded as CSS. Place a <div class="tb-wave-*">
+   at the bottom of a section. Height controls wave prominence.
+   Color class targets the NEXT section's background color.
+─────────────────────────────────────────────────────────────────── */
+
+/* Base wave wrapper */
+.tb-wave {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+.tb-wave svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Wave into cream */
+.tb-wave-cream svg { fill: var(--tb-cream); }
+
+/* Wave into cream-deep */
+.tb-wave-cream-deep svg { fill: var(--tb-cream-deep); }
+
+/* Wave into paper */
+.tb-wave-paper svg { fill: var(--tb-paper); }
+
+/* Wave into lime wash */
+.tb-wave-lime svg { fill: var(--tb-lime-wash); }
+
+/* Wave into terracotta wash */
+.tb-wave-terra svg { fill: var(--tb-terracotta-wash); }
+
+/* Wave into ink (dark sections) */
+.tb-wave-ink svg { fill: var(--tb-ink); }
+
+/* ─── Section background colours ─────────────────────────────────
+   Pair with tb-section for quick full-width coloured sections.
+─────────────────────────────────────────────────────────────────── */
+.tb-bg-cream       { background-color: var(--tb-cream); }
+.tb-bg-cream-deep  { background-color: var(--tb-cream-deep); }
+.tb-bg-paper       { background-color: var(--tb-paper); }
+.tb-bg-lime-wash   { background-color: var(--tb-lime-wash); }
+.tb-bg-terra-wash  { background-color: var(--tb-terracotta-wash); }
+.tb-bg-forest-wash { background-color: var(--tb-forest-wash); }
+.tb-bg-turmeric-wash { background-color: var(--tb-turmeric-wash); }
+.tb-bg-ink         { background-color: var(--tb-ink); }
+.tb-bg-lime        { background-color: var(--tb-lime); }
+.tb-bg-terracotta  { background-color: var(--tb-terracotta); }
+
+/* ─── Blob / organic mask ─────────────────────────────────────────
+   Apply to product images or callout circles for organic feel.
+   Uses clip-path polygon — softer than a perfect circle.
+─────────────────────────────────────────────────────────────────── */
+.tb-blob {
+  clip-path: polygon(
+    30% 0%, 70% 0%, 95% 15%,
+    100% 45%, 92% 75%, 70% 95%,
+    40% 100%, 10% 88%, 0% 60%,
+    5% 25%
+  );
+}
+
+.tb-blob-2 {
+  clip-path: polygon(
+    25% 0%, 75% 5%, 100% 30%,
+    95% 65%, 80% 90%, 50% 100%,
+    15% 95%, 0% 70%, 5% 35%,
+    10% 10%
+  );
+}
+
+/* Squircle — iOS-style rounded square, great for product card images */
+.tb-squircle {
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+
+/* ─── Colour accent bar (Hippeas-inspired stripe) ─────────────────
+   Thin bar above a section or on a card edge.
+─────────────────────────────────────────────────────────────────── */
+.tb-accent-bar::before {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 4px;
+  border-radius: var(--tb-r-pill);
+  background: var(--tb-lime);
+  margin-bottom: var(--tb-space-4);
+}
+.tb-accent-bar-terra::before { background: var(--tb-terracotta); }
+.tb-accent-bar-forest::before { background: var(--tb-forest); }
+
+/* ─── Highlight underline (editorial heading accent) ──────────────
+   Wavy underline on key words. Use <span class="tb-underline">
+─────────────────────────────────────────────────────────────────── */
+.tb-underline-lime {
+  text-decoration: underline;
+  text-decoration-color: var(--tb-lime);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
+  text-decoration-style: wavy;
+}
+.tb-underline-terra {
+  text-decoration: underline;
+  text-decoration-color: var(--tb-terracotta-soft);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
+  text-decoration-style: wavy;
+}
+
+/* ─── Organic hover tilt (product cards) ─────────────────────────
+   Very subtle rotation on hover — Hippeas-feel energy
+─────────────────────────────────────────────────────────────────── */
+.tb-tilt-hover {
+  transition: transform var(--tb-duration-slow) var(--tb-ease-spring);
+}
+.tb-tilt-hover:hover { transform: rotate(-1.5deg) scale(1.02); }
+.tb-tilt-hover:nth-child(even):hover { transform: rotate(1.5deg) scale(1.02); }
+
+/* ─── Frosted glass card ──────────────────────────────────────────
+   For overlays on image backgrounds
+─────────────────────────────────────────────────────────────────── */
+.tb-glass {
+  background: rgba(255, 252, 246, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 252, 246, 0.5);
+  border-radius: var(--tb-r-xl);
+}
+
+/* ─── Coloured dot / icon bubble ─────────────────────────────────
+   For feature list icons and step numbers
+─────────────────────────────────────────────────────────────────── */
+.tb-bubble {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--tb-r-pill);
+  flex-shrink: 0;
+}
+.tb-bubble-sm { width: 36px; height: 36px; }
+.tb-bubble-lg { width: 64px; height: 64px; }
+.tb-bubble-lime   { background: var(--tb-lime-wash); color: var(--tb-lime-deep); }
+.tb-bubble-terra  { background: var(--tb-terracotta-wash); color: var(--tb-terracotta-deep); }
+.tb-bubble-forest { background: var(--tb-forest-wash); color: var(--tb-forest-deep); }
+.tb-bubble-turmeric { background: var(--tb-turmeric-wash); color: var(--tb-turmeric-deep); }
+.tb-bubble-ink    { background: var(--tb-ink); color: var(--tb-paper); }
