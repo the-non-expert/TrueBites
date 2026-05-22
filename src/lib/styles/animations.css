@@ -1,0 +1,192 @@
+/* ═══════════════════════════════════════════════════════════════
+   TrueBites Animations & Motion
+   Keyframes, scroll-reveal utilities, micro-interaction classes.
+   Hippeas-inspired: bouncy, energetic, organic feel.
+
+   Reduced-motion: all animations collapse to instant/none
+   via @media (prefers-reduced-motion: reduce).
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─── Keyframes ───────────────────────────────────────────────────*/
+
+@keyframes tb-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes tb-fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes tb-fade-down {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes tb-scale-in {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes tb-scale-spring {
+  0%   { opacity: 0; transform: scale(0.85); }
+  60%  { transform: scale(1.04); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes tb-slide-right {
+  from { opacity: 0; transform: translateX(-16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes tb-slide-left {
+  from { opacity: 0; transform: translateX(16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Floating — gentle up/down for hero product image */
+@keyframes tb-float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+/* Subtle pulse for CTAs, WhatsApp button */
+@keyframes tb-pulse-soft {
+  0%, 100% { box-shadow: 0 8px 24px rgba(163,200,58,0.35); }
+  50%       { box-shadow: 0 8px 36px rgba(163,200,58,0.55); }
+}
+
+@keyframes tb-pulse-whatsapp {
+  0%, 100% { box-shadow: 0 8px 18px rgba(37,211,102,0.3); }
+  50%       { box-shadow: 0 8px 32px rgba(37,211,102,0.5); }
+}
+
+/* Shimmer — skeleton loading state */
+@keyframes tb-shimmer {
+  from { background-position: -200% center; }
+  to   { background-position: 200% center; }
+}
+
+/* Spin — loading spinner */
+@keyframes tb-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Bounce dot — typing / loading indicator */
+@keyframes tb-bounce-dot {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+  40%            { transform: scale(1.0); opacity: 1; }
+}
+
+/* Check mark draw — success state */
+@keyframes tb-check-draw {
+  from { stroke-dashoffset: 48; }
+  to   { stroke-dashoffset: 0; }
+}
+
+/* ─── Animation utility classes ───────────────────────────────────*/
+
+.tb-animate-fade-in    { animation: tb-fade-in    var(--tb-duration-slow) var(--tb-ease-out) both; }
+.tb-animate-fade-up    { animation: tb-fade-up    var(--tb-duration-slow) var(--tb-ease-out) both; }
+.tb-animate-fade-down  { animation: tb-fade-down  var(--tb-duration-slow) var(--tb-ease-out) both; }
+.tb-animate-scale-in   { animation: tb-scale-in   var(--tb-duration-slow) var(--tb-ease-spring) both; }
+.tb-animate-scale-spring { animation: tb-scale-spring var(--tb-duration-slower) var(--tb-ease-spring) both; }
+.tb-animate-slide-right { animation: tb-slide-right var(--tb-duration-slow) var(--tb-ease-out) both; }
+.tb-animate-slide-left  { animation: tb-slide-left  var(--tb-duration-slow) var(--tb-ease-out) both; }
+.tb-animate-float      { animation: tb-float      3s  var(--tb-ease-smooth) infinite; }
+.tb-animate-pulse-lime { animation: tb-pulse-soft var(--tb-duration-slowest) var(--tb-ease-smooth) infinite; }
+.tb-animate-pulse-whatsapp { animation: tb-pulse-whatsapp 2s var(--tb-ease-smooth) infinite; }
+.tb-animate-spin       { animation: tb-spin       0.8s var(--tb-ease-linear) infinite; }
+
+/* Stagger children — apply to parent, children stagger via nth-child */
+.tb-stagger > * {
+  animation: tb-fade-up var(--tb-duration-slow) var(--tb-ease-out) both;
+}
+.tb-stagger > *:nth-child(1) { animation-delay: 0ms;   }
+.tb-stagger > *:nth-child(2) { animation-delay: 80ms;  }
+.tb-stagger > *:nth-child(3) { animation-delay: 160ms; }
+.tb-stagger > *:nth-child(4) { animation-delay: 240ms; }
+.tb-stagger > *:nth-child(5) { animation-delay: 320ms; }
+.tb-stagger > *:nth-child(6) { animation-delay: 400ms; }
+
+/* Delay modifiers */
+.tb-delay-0   { animation-delay: 0ms;   }
+.tb-delay-1   { animation-delay: 80ms;  }
+.tb-delay-2   { animation-delay: 160ms; }
+.tb-delay-3   { animation-delay: 240ms; }
+.tb-delay-4   { animation-delay: 320ms; }
+.tb-delay-5   { animation-delay: 400ms; }
+.tb-delay-6   { animation-delay: 480ms; }
+
+/* ─── Scroll-reveal setup ─────────────────────────────────────────
+   JS adds .is-visible when element enters viewport.
+   Initial state: hidden. Visible state: shown.
+   Use with IntersectionObserver in a Svelte action.
+─────────────────────────────────────────────────────────────────── */
+.tb-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity    var(--tb-duration-slower) var(--tb-ease-out),
+    transform  var(--tb-duration-slower) var(--tb-ease-smooth);
+}
+.tb-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tb-reveal-scale {
+  opacity: 0;
+  transform: scale(0.94);
+  transition:
+    opacity    var(--tb-duration-slower) var(--tb-ease-out),
+    transform  var(--tb-duration-slower) var(--tb-ease-spring);
+}
+.tb-reveal-scale.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Stagger delay for revealed grid children */
+.tb-reveal-stagger > .tb-reveal:nth-child(1)  { transition-delay: 0ms;   }
+.tb-reveal-stagger > .tb-reveal:nth-child(2)  { transition-delay: 80ms;  }
+.tb-reveal-stagger > .tb-reveal:nth-child(3)  { transition-delay: 160ms; }
+.tb-reveal-stagger > .tb-reveal:nth-child(4)  { transition-delay: 240ms; }
+.tb-reveal-stagger > .tb-reveal:nth-child(5)  { transition-delay: 320ms; }
+.tb-reveal-stagger > .tb-reveal:nth-child(6)  { transition-delay: 400ms; }
+
+/* ─── Skeleton loading ────────────────────────────────────────────*/
+.tb-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--tb-hairline) 25%,
+    var(--tb-cream-deep) 50%,
+    var(--tb-hairline) 75%
+  );
+  background-size: 200% 100%;
+  animation: tb-shimmer 1.5s var(--tb-ease-linear) infinite;
+  border-radius: var(--tb-r-sm);
+}
+
+/* ─── Reduced motion override ─────────────────────────────────────
+   Respects user system preference.
+   All animations and transitions collapse to instant.
+─────────────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .tb-reveal,
+  .tb-reveal-scale {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

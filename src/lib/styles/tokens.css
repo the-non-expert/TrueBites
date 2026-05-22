@@ -1,0 +1,281 @@
+/* ═══════════════════════════════════════════════════════════════
+   TrueBites Design Tokens
+   Single source of truth for all design decisions.
+   @theme exposes tokens as Tailwind utilities.
+   :root exposes them as CSS vars for direct use.
+   ═══════════════════════════════════════════════════════════════ */
+
+@theme {
+
+  /* ─── Color palette ───────────────────────────────────────────
+     Warm, earthy base (makhana/natural food) +
+     vivid lime accent (Hippeas-inspired energy)
+  ─────────────────────────────────────────────────────────────── */
+
+  /* Lime — hero brand accent, bold CTA, energy */
+  --color-lime:       #A3C83A;
+  --color-lime-deep:  #7FA82F;
+  --color-lime-soft:  #D6EC9A;
+  --color-lime-wash:  #F2FAE3;
+
+  /* Terracotta — warmth, product, secondary actions */
+  --color-terracotta:       #C26B3D;
+  --color-terracotta-deep:  #9E4F26;
+  --color-terracotta-soft:  #E8B89B;
+  --color-terracotta-wash:  #FBF0E9;
+
+  /* Forest — natural, health, success states */
+  --color-forest:       #2F5C42;
+  --color-forest-deep:  #1F3F2D;
+  --color-forest-soft:  #9DC4AD;
+  --color-forest-wash:  #EDF5F0;
+
+  /* Turmeric — warmth, highlights, tags */
+  --color-turmeric:       #E5B247;
+  --color-turmeric-deep:  #C48F28;
+  --color-turmeric-soft:  #F3D88C;
+  --color-turmeric-wash:  #FDF7E8;
+
+  /* Neutrals — structured around a warm ink, not pure black */
+  --color-ink:              #1F1A14;
+  --color-charcoal:         #4A4036;
+  --color-muted:            #8A7F70;
+  --color-hairline:         #ECE4D5;
+  --color-hairline-strong:  #D9CFBC;
+  --color-cream:            #FAF6EE;
+  --color-cream-deep:       #F2EBDB;
+  --color-paper:            #FFFCF6;
+  --color-white:            #FFFFFF;
+
+  /* Semantic */
+  --color-success:    #2F5C42;
+  --color-error:      #B8453A;
+  --color-warning:    #E5B247;
+  --color-whatsapp:   #25D366;
+  --color-whatsapp-deep: #1FAE56;
+
+  /* ─── Typography ──────────────────────────────────────────────
+     Display: Instrument Serif — editorial, premium, italic accents
+     Body: Plus Jakarta Sans — clean, modern, highly legible
+     Mono: JetBrains Mono — codes, redemption codes
+  ─────────────────────────────────────────────────────────────── */
+  --font-display: 'Instrument Serif', 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+  /* ─── Type scale (px base, unitless line-heights) ─────────────
+     Steps: 2xs → 7xl   Ratio: ~1.25 minor third
+  ─────────────────────────────────────────────────────────────── */
+  --text-2xs:  0.625rem;   /* 10px */
+  --text-xs:   0.75rem;    /* 12px */
+  --text-sm:   0.875rem;   /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-lg:   1.125rem;   /* 18px */
+  --text-xl:   1.25rem;    /* 20px */
+  --text-2xl:  1.5rem;     /* 24px */
+  --text-3xl:  1.875rem;   /* 30px */
+  --text-4xl:  2.25rem;    /* 36px */
+  --text-5xl:  3rem;       /* 48px */
+  --text-6xl:  3.75rem;    /* 60px */
+  --text-7xl:  4.5rem;     /* 72px */
+
+  /* ─── Spacing scale (4px base grid) ──────────────────────────
+     Covers micro (1) through section-level (32) spacing.
+  ─────────────────────────────────────────────────────────────── */
+  --spacing-0:  0px;
+  --spacing-px: 1px;
+  --spacing-1:  0.25rem;   /* 4px  */
+  --spacing-2:  0.5rem;    /* 8px  */
+  --spacing-3:  0.75rem;   /* 12px */
+  --spacing-4:  1rem;      /* 16px */
+  --spacing-5:  1.25rem;   /* 20px */
+  --spacing-6:  1.5rem;    /* 24px */
+  --spacing-8:  2rem;      /* 32px */
+  --spacing-10: 2.5rem;    /* 40px */
+  --spacing-12: 3rem;      /* 48px */
+  --spacing-14: 3.5rem;    /* 56px */
+  --spacing-16: 4rem;      /* 64px */
+  --spacing-20: 5rem;      /* 80px */
+  --spacing-24: 6rem;      /* 96px */
+  --spacing-28: 7rem;      /* 112px */
+  --spacing-32: 8rem;      /* 128px */
+
+  /* ─── Border radius ───────────────────────────────────────────
+     Pill-heavy system — Hippeas-inspired rounded shapes
+  ─────────────────────────────────────────────────────────────── */
+  --radius-none: 0px;
+  --radius-xs:   4px;
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   18px;
+  --radius-xl:   24px;
+  --radius-2xl:  32px;
+  --radius-3xl:  48px;
+  --radius-pill: 9999px;
+
+  /* ─── Shadows ─────────────────────────────────────────────────
+     Tinted with warm ink — avoids cold grey shadows on warm palette
+  ─────────────────────────────────────────────────────────────── */
+  --shadow-xs:    0 1px 2px rgba(31,26,20,0.06);
+  --shadow-sm:    0 1px 2px rgba(31,26,20,0.06), 0 1px 1px rgba(31,26,20,0.04);
+  --shadow-md:    0 4px 12px rgba(31,26,20,0.07), 0 1px 3px rgba(31,26,20,0.05);
+  --shadow-lg:    0 18px 40px rgba(31,26,20,0.12), 0 4px 10px rgba(31,26,20,0.06);
+  --shadow-xl:    0 32px 64px rgba(31,26,20,0.16), 0 8px 16px rgba(31,26,20,0.08);
+  --shadow-card:  0 1px 0 rgba(255,255,255,0.6) inset, 0 1px 3px rgba(31,26,20,0.05), 0 4px 14px rgba(31,26,20,0.06);
+  --shadow-lime:  0 8px 24px rgba(163,200,58,0.35);
+  --shadow-terra: 0 8px 24px rgba(194,107,61,0.3);
+
+  /* ─── Motion ──────────────────────────────────────────────────
+     Named easings for consistent feel across all interactions.
+  ─────────────────────────────────────────────────────────────── */
+
+  /* Durations */
+  --duration-instant:  80ms;
+  --duration-fast:     150ms;
+  --duration-base:     200ms;
+  --duration-slow:     350ms;
+  --duration-slower:   500ms;
+  --duration-slowest:  800ms;
+
+  /* Easings */
+  --ease-linear:  linear;
+  --ease-in:      cubic-bezier(0.4, 0, 1, 1);
+  --ease-out:     cubic-bezier(0, 0, 0.2, 1);
+  --ease-smooth:  cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-sharp:   cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);   /* bouncy, Hippeas-feel */
+  --ease-bounce:  cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* ─── Z-index ─────────────────────────────────────────────────
+     Named layers prevent z-index wars
+  ─────────────────────────────────────────────────────────────── */
+  --z-base:    0;
+  --z-raised:  1;
+  --z-dropdown: 100;
+  --z-sticky:  200;
+  --z-overlay: 300;
+  --z-modal:   400;
+  --z-toast:   500;
+  --z-top:     9999;
+
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   CSS Custom Properties (direct var() access, no Tailwind needed)
+   Mirrors @theme above — keep in sync.
+   ═══════════════════════════════════════════════════════════════ */
+:root {
+
+  /* Colors */
+  --tb-lime:              #A3C83A;
+  --tb-lime-deep:         #7FA82F;
+  --tb-lime-soft:         #D6EC9A;
+  --tb-lime-wash:         #F2FAE3;
+  --tb-terracotta:        #C26B3D;
+  --tb-terracotta-deep:   #9E4F26;
+  --tb-terracotta-soft:   #E8B89B;
+  --tb-terracotta-wash:   #FBF0E9;
+  --tb-forest:            #2F5C42;
+  --tb-forest-deep:       #1F3F2D;
+  --tb-forest-soft:       #9DC4AD;
+  --tb-forest-wash:       #EDF5F0;
+  --tb-turmeric:          #E5B247;
+  --tb-turmeric-deep:     #C48F28;
+  --tb-turmeric-soft:     #F3D88C;
+  --tb-turmeric-wash:     #FDF7E8;
+  --tb-ink:               #1F1A14;
+  --tb-charcoal:          #4A4036;
+  --tb-muted:             #8A7F70;
+  --tb-hairline:          #ECE4D5;
+  --tb-hairline-strong:   #D9CFBC;
+  --tb-cream:             #FAF6EE;
+  --tb-cream-deep:        #F2EBDB;
+  --tb-paper:             #FFFCF6;
+  --tb-success:           #2F5C42;
+  --tb-error:             #B8453A;
+  --tb-warning:           #E5B247;
+  --tb-whatsapp:          #25D366;
+  --tb-whatsapp-deep:     #1FAE56;
+
+  /* Typography */
+  --tb-font-display: 'Instrument Serif', 'Cormorant Garamond', Georgia, serif;
+  --tb-font-body:    'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --tb-font-mono:    'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+  /* Type scale */
+  --tb-text-2xs:  0.625rem;
+  --tb-text-xs:   0.75rem;
+  --tb-text-sm:   0.875rem;
+  --tb-text-base: 1rem;
+  --tb-text-lg:   1.125rem;
+  --tb-text-xl:   1.25rem;
+  --tb-text-2xl:  1.5rem;
+  --tb-text-3xl:  1.875rem;
+  --tb-text-4xl:  2.25rem;
+  --tb-text-5xl:  3rem;
+  --tb-text-6xl:  3.75rem;
+  --tb-text-7xl:  4.5rem;
+
+  /* Spacing */
+  --tb-space-1:  0.25rem;
+  --tb-space-2:  0.5rem;
+  --tb-space-3:  0.75rem;
+  --tb-space-4:  1rem;
+  --tb-space-5:  1.25rem;
+  --tb-space-6:  1.5rem;
+  --tb-space-8:  2rem;
+  --tb-space-10: 2.5rem;
+  --tb-space-12: 3rem;
+  --tb-space-14: 3.5rem;
+  --tb-space-16: 4rem;
+  --tb-space-20: 5rem;
+  --tb-space-24: 6rem;
+  --tb-space-28: 7rem;
+  --tb-space-32: 8rem;
+
+  /* Radii */
+  --tb-r-none: 0px;
+  --tb-r-xs:   4px;
+  --tb-r-sm:   8px;
+  --tb-r-md:   12px;
+  --tb-r-lg:   18px;
+  --tb-r-xl:   24px;
+  --tb-r-2xl:  32px;
+  --tb-r-3xl:  48px;
+  --tb-r-pill: 9999px;
+
+  /* Shadows */
+  --tb-shadow-xs:    0 1px 2px rgba(31,26,20,0.06);
+  --tb-shadow-sm:    0 1px 2px rgba(31,26,20,0.06), 0 1px 1px rgba(31,26,20,0.04);
+  --tb-shadow-md:    0 4px 12px rgba(31,26,20,0.07), 0 1px 3px rgba(31,26,20,0.05);
+  --tb-shadow-lg:    0 18px 40px rgba(31,26,20,0.12), 0 4px 10px rgba(31,26,20,0.06);
+  --tb-shadow-xl:    0 32px 64px rgba(31,26,20,0.16), 0 8px 16px rgba(31,26,20,0.08);
+  --tb-shadow-card:  0 1px 0 rgba(255,255,255,0.6) inset, 0 1px 3px rgba(31,26,20,0.05), 0 4px 14px rgba(31,26,20,0.06);
+  --tb-shadow-lime:  0 8px 24px rgba(163,200,58,0.35);
+  --tb-shadow-terra: 0 8px 24px rgba(194,107,61,0.3);
+
+  /* Motion */
+  --tb-duration-instant:  80ms;
+  --tb-duration-fast:     150ms;
+  --tb-duration-base:     200ms;
+  --tb-duration-slow:     350ms;
+  --tb-duration-slower:   500ms;
+  --tb-duration-slowest:  800ms;
+  --tb-ease-linear:  linear;
+  --tb-ease-in:      cubic-bezier(0.4, 0, 1, 1);
+  --tb-ease-out:     cubic-bezier(0, 0, 0.2, 1);
+  --tb-ease-smooth:  cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --tb-ease-sharp:   cubic-bezier(0.4, 0, 0.2, 1);
+  --tb-ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+  --tb-ease-bounce:  cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* Z-index */
+  --tb-z-base:     0;
+  --tb-z-raised:   1;
+  --tb-z-dropdown: 100;
+  --tb-z-sticky:   200;
+  --tb-z-overlay:  300;
+  --tb-z-modal:    400;
+  --tb-z-toast:    500;
+  --tb-z-top:      9999;
+}
